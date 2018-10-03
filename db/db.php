@@ -1,14 +1,17 @@
 <?php
 $conn = mysqli_connect(HOST, USER, PASS, DATABASE);
-
+mysqli_set_charset($conn,"utf8");
 
 function select($sql) {
     global $conn;
     $result = mysqli_query($conn, 'select '.$sql);
-    while($row = mysqli_fetch_assoc($result)){
-        $data[] = $row;
-    }
-    return $data;
+    if (mysqli_num_rows($result)):
+        while($row = mysqli_fetch_assoc($result)){
+            $data[] = $row;
+        }
+        return $data;
+    endif;
+    return null;
 }
 
 function save($table, Array $array, $id = null) {
@@ -36,9 +39,9 @@ function save($table, Array $array, $id = null) {
     return mysqli_affected_rows($conn);
 }
 
-function del ($id = ''){
+function del ($table, $id = ''){
     global $conn;
-    $sql = "delete from pages where id = '$id'";
+    $sql = "delete from $table where id = '$id'";
     mysqli_query($conn, $sql);
     return mysqli_affected_rows($conn);
 }

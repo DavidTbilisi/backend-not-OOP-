@@ -1,0 +1,9 @@
+
+RewriteEngine on
+RewriteRule dashboard index.php?file=dashboard [NC]
+RewriteRule profile index.php?file=profile [NC]
+RewriteRule logout index.php?file=logout [NC]
+RewriteRule login index.php?file=login [NC]
+RewriteRule register index.php?file=register [NC]
+RewriteRule edit index.php?file=editable_page_admin [NC]
+RewriteRule editpage index.php?file=editable_page [NC]

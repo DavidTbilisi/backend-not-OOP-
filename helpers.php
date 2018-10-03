@@ -1,6 +1,9 @@
 <?php
-define('BASE_URL',$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST']);
-define('HOME','/giaPHP/backend/');
+
+
+
+define('BASE_URL',$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].'/');
+define('HOME','giaPHP/backend/');
 define('VIEW','view');
 define('CTRL','controller');
 define('DB','db');
@@ -39,6 +42,12 @@ function cc( $data ){
     echo 'console.log('. json_encode( $data ) .')';
     echo '</script>';
 }
+
+
+function redirect($url) {
+    header('location: '.$url); die;
+}
+
 
 ?>
 
